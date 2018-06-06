@@ -1,0 +1,14 @@
+body {
+    padding-top: 50px;
+}
+
+fieldset {
+    border: solid 1px #ced4da;
+    border-radius: 0.25rem;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+.btn {
+    margin-top: 20px;
+}
