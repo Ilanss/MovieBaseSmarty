@@ -19,10 +19,9 @@
                 {if isset($smarty.post.id)}
                     <input type="hidden" value="<?php echo $_POST['id'];?>" name="id">
                     <button type="submit" id="submit" name="modify" class="btn btn-warning">Modifier le film </button>
-                {/if}
                 {else}
-                    <button type="submit" id="submit" name="submit" class="btn btn-primary">Ajouter le film </button>
-                {/else}
+                <button type="submit" id="submit" name="submit" class="btn btn-primary">Ajouter le film </button>
+                {/if}
             </form>
         </div>
     </div>

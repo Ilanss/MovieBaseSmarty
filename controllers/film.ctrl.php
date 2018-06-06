@@ -89,7 +89,8 @@ class filmCtrl{
 
     }
 
-    public static function all(){
+    public static function all($smarty){
+
         if(isset($_SESSION['id'])){
             $values = [
               ':id' => $_SESSION['id']
@@ -97,6 +98,7 @@ class filmCtrl{
             $smarty->assign('films', film::allFilmPlusList($values));
         }
         else {
+
             $smarty->assign('films', film::all());
         }
         $smarty->display('film/index.html.tpl');

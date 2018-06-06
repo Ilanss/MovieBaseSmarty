@@ -20,7 +20,7 @@ switch ($request_uri[0]) {
 
     case '/film':
         require_once ('controllers/film.ctrl.php');
-        filmCtrl::all();
+        filmCtrl::all($smarty);
         break;
 
     case '/film/create':
