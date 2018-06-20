@@ -40,6 +40,7 @@ Utilisateur test:
 
 # Future change
 Le site à été migré pour utiliser le système de templating Smarty. Il est toujours possible de trouver la version sans ici: https://github.com/Ilanss/MovieBase (attention, beaucoup de fonctionnalités ont été ajoutées depuis la migration).
+
 Le prochain objectif est de permettre aux utilisateurs de changer leurs infos. Sinon il y a aussi des corrections mineures qui vont être apportée afin de combler des lacunes et rendre l'application plus stable.
 
 # Objectifs du projet
