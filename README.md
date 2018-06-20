@@ -2,6 +2,7 @@
 Ce projet de site web à été développé dans le cadre d'un cours de développement PHP/SQL à la HEIG-VD. Le but de ce site est de permettre à des utilisateurs d'insérer des films, de les ajouter à leur liste et d'indiquer si ils ont été visionné. Il possède aussi une gestion de comptes administrateur.
 
 # How to
+Attention, cette application nécessite l'installation de Smarty sur le serveur. Si celui-ci n'est pas présent toutes les informations sont accessible ici: https://www.smarty.net/
 1. Télécharger la totalité du projet
 2. Décompresser l'archive
 3. Placer le contenu du dossier à l'endroit voulut sur le serveur (racine ou pas)
