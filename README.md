@@ -11,28 +11,36 @@ Ce projet de site web à été développé dans le cadre d'un cours de développ
   * DB_PASS = Mot de passe de la BDD
   * DB_NAME = Nom de la BDD
   * DB_HOST = Adresse de la BDD (probablement localhost)
-  * SITE_ROOT = Chemin du site dans le cas ou il n'est pas à la racine
+  * SITE_ROOT = Chemin du site dans le cas ou il n'est pas à la racine du serveur
 6. Enjoy! Le site est fonctionnel!
 
 # Films
-Les films possèdent un titre, une image et une description (synopsis). Il est possible d'ajouter des films, les modifier et les supprimer.
+Les films possèdent un titre, une image et une description (synopsis). Il est possible d'ajouter des films et, si l'utilisateur est un administrateur, les modifier et les supprimer.
 
 # Comptes
-Les comptes utilisateurs peuvent être créé depuis le site. Il faut par contre passer par la BDD pour définir le rôle d'administrateur à un utilisateur car ceci n'est pas encore géré sur le site. Il n'est pas non plus possible à l'heure actuelle de changer les différentes infos des utilisateurs (ceci n'étant pas une priorité dans ce projet).
+Les comptes utilisateurs peuvent être créé depuis le site. L'administrateur du site peut attribuer des droits administrateur à d'autres utilisateur de le site. Pour l'heure seul l'administrateur peut changer les différentes infos des utilisateurs mais bientôt l'utilisateur pourra aussi le faire lui même.
 
 # Droits
 * Un utilisateur non loggé ne peut que voir la liste des films.
-* Un utilisateur peut ajouter des films à sa liste et les marquer comme vu
-* Un administrateur peut modifier et supprimer les films
+* Un utilisateur peut ajouter des films à sa liste et les marquer comme vu.
+* Un administrateur peut modifier et supprimer les films. Il peut aussi gérer les utilisateurs.
 
 # Accès
+La base de données contient déjà 2 utilisateurs de base dont voici les accès
+
 Administrateur:
 > Login->admin
+
 > password->admin
 
 Utilisateur test:
 > Login->test
+
 > password->1234
 
 # Future change
-Le site est en train d'être migré pour utiliser le système de templating Smarty. Il sera publié dans un autre repo (ou éventuellement celui-ci).
+Le site à été migré pour utiliser le système de templating Smarty. Il est toujours possible de trouver la version sans ici: https://github.com/Ilanss/MovieBase (attention, beaucoup de fonctionnalités ont été ajoutées depuis la migration).
+Le prochain objectif est de permettre aux utilisateurs de changer leurs infos. Sinon il y a aussi des corrections mineures qui vont être apportée afin de combler des lacunes et rendre l'application plus stable.
+
+# Objectifs du projet
+Tout les objectifs, ainsi que les objectifs complémentaire, determiné au début du projet ont été atteint.
