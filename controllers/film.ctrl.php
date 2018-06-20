@@ -10,10 +10,10 @@ require_once ('models/film.model.php');
 
 class filmCtrl{
 
-    public static function create(){
+    public static function create($smarty){
         $values = [
             ':title' => empty($_POST['title']) ? null : $_POST['title'],
-            ':image' => ($_FILES['image']['size'] == 0) ? $_SESSION['root'] . "/assets/img/poster-placeholder.png" : $_SESSION['root'] . "/assets/img/poster/" . basename($_FILES['image']['name']),
+            ':image' => ($_FILES['image']['size'] == 0) ? "/assets/img/poster-placeholder.png" : "/assets/img/poster/" . basename($_FILES['image']['name']),
             ':description' => empty($_POST['description']) ? null : $_POST['description']
         ];
 
@@ -25,7 +25,9 @@ class filmCtrl{
                 if (move_uploaded_file($_FILES['image']['tmp_name'], $uploadfile)) {}
                 else {
                     $smarty->assign('errors', "Erreur au transfert de l'image...");
+                    $errors = "Erreur au transfert de l'image...";
                     $smarty->display('film/create.html.tpl');
+                    $smarty->clearAssign('errors');
                 }
             }
             if(empty($errors)) {
@@ -33,12 +35,10 @@ class filmCtrl{
 
                 if (empty($errors)) {
                     $smarty->assign('success', "Le film " . $values[':title'] . " a été créé!");
-                    $smarty->display('film/index.html.tpl');
-                    $smarty->clear_assign('success');
+                    filmCtrl::all($smarty);
                 } else {
                     $smarty->assign('errors', "Une erreur s'est produite lors de l'insertion du film dans la base de donnée...");
                     $smarty->display('film/create.html.tpl');
-                    $smarty->clear_assign('errors');
                 }
             }
         }
@@ -47,10 +47,10 @@ class filmCtrl{
         }
     }
 
-    public static function modify(){
+    public static function modify($smarty){
         $values = [
             ':title' => empty($_POST['title']) ? null : $_POST['title'],
-            ':image' => ($_FILES['image']['size'] == 0) ? $_SESSION['root'] . "/assets/img/poster-placeholder.png" : $_SESSION['root'] . "/assets/img/poster/" . basename($_FILES['image']['name']),
+            ':image' => ($_FILES['image']['size'] == 0) ? "/assets/img/poster-placeholder.png" : "/assets/img/poster/" . basename($_FILES['image']['name']),
             ':description' => empty($_POST['description']) ? null : $_POST['description'],
             ':id' => $_POST['id']
         ];
@@ -71,12 +71,10 @@ class filmCtrl{
 
                 if (empty($errors)) {
                     $smarty->assign('success', "Le film " . $values[':title'] . " a été modifié!");
-                    $smarty->display('film/index.html.tpl');
-                    unset($success);
+                    filmCtrl::all($smarty);
                 } else {
                     $smarty->assign('errors', "Une erreur s'est produite lors de l'insertion du film dans la base de donnée...");
                     $smarty->display('film/create.html.tpl');
-                    $smarty->assign('errors');
                 }
             }
         }
@@ -85,8 +83,39 @@ class filmCtrl{
         }
     }
 
-    public static function delete(){
+    public static function delete($smarty){
+        $values = [
+            ':id' => $_POST['id']
+        ];
 
+        require_once ('models/userHasFilm.model.php');
+
+        (empty($values[':id'])) ? $errors = "Pas d'id reçus..." : '';
+
+        if (empty($errors)) {
+            $db = database::connect();
+            $db->beginTransaction();
+
+            try {
+                userHasFilm::deleteMovie($values);
+                film::delete($values);
+                // Si on arrive jusqu'à cette ligne, c'est que toutes les créations se font correctement
+                // Du coup, on "valide" toutes les opérations effectuées sur la base de données
+                $db->commit();
+                $smarty->assign('success', "Le film a été supprimé!");
+                filmCtrl::all($smarty);
+            } catch (Exception $e) {
+                // Si on capte la moindre erreur, c'est qu'une des opérations n'a pas été
+                // Dans ce cas, on annule tout ce qu'on a tenté de faire depuis le début de la transaction
+                $db->rollback();
+                $smarty->assign('errors', "Une erreur s'est produite lors de la suppression du film...");
+                filmCtrl::all($smarty);
+            }
+        }
+        else {
+            $smarty->assign('errors', "Pas d'id reçus...");
+            filmCtrl::all($smarty);
+        }
     }
 
     public static function all($smarty){
@@ -104,7 +133,7 @@ class filmCtrl{
         $smarty->display('film/index.html.tpl');
     }
 
-    public static function allFromUser(){
+    public static function allFromUser($smarty){
         $values = [
             ':id' => $_SESSION['id']
             ];
@@ -113,11 +142,7 @@ class filmCtrl{
         $smarty->display('film/index.html.tpl');
     }
 
-    public static function find(){
-
-    }
-
-    public static function add(){
+    public static function add($smarty){
         $values = [
             ':idFilm' => $_POST['id'],
             ':idUser' => $_SESSION['id']
@@ -128,22 +153,20 @@ class filmCtrl{
         $errors = userHasFilm::add($values);
 
         if(empty($errors)){
-            $smart->assign('success', "Le film a été ajouté à votre liste");
+            $smarty->assign('success', "Le film a été ajouté à votre liste");
             $values = [
                 ':id' => $_SESSION['id']
             ];
             $smarty->assign('films', film::allFilmPlusList($values));
-            $smarty->display('film/index.html.tpl');
-            $smarty->clear_assign('success');
+            filmCtrl::all($smarty);
         }
         else{
             $smarty->assign('errors', "Une erreur s'est produite lors de l'insertion du film dans votre liste...");
-            $smarty->display('film/index.html.tpl');
-            $smarty->clear_assign('errors');
+            filmCtrl::all($smarty);
         }
     }
 
-    public static function view(){
+    public static function view($smarty){
         $values = [
             ':idFilm' => $_POST['vu'],
             ':idUser' => $_SESSION['id']
@@ -160,13 +183,21 @@ class filmCtrl{
 
         if(empty($errors)){
             $smarty->assign('success', "Le film à été coché comme vu!");
-            $smarty->display('film/index.html.tpl');
-            $smarty->clear_assign('success');
+            filmCtrl::all($smarty);
         }
         else{
             $smarty->assign('errors', "Une erreur s'est produite lors de l'ajout au film vu...");
-            $smarty->display('film/index.html.tpl');
-            $smarty->clear_assign('errors');
+            filmCtrl::all($smarty);
         }
+    }
+
+    public static function search($smarty){
+        $values = [
+            ':id' => $_POST['id'],
+            ':search' => $_POST['search'],
+        ];
+
+        $smarty->assign('films', film::find($values));
+        $smarty->display('film/index.html.tpl');
     }
 }

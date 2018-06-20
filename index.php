@@ -22,6 +22,4 @@ $_SESSION['root'] = $base['SITE_ROOT'];
 // Sauvegarde de la connexion à la BD pour la réutiliser à d'autres endroits de l'application
 
 /* --- Chargement des routes --- */
-$smarty->display('layouts/nav.html.tpl');
 require_once('routes.php');
-$smarty->display('layouts/footer.html.tpl');

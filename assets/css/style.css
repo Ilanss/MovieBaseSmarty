@@ -1,5 +1,5 @@
 body {
-    padding-top: 50px;
+    padding-top: 80px;
 }
 
 fieldset {
@@ -10,5 +10,13 @@ fieldset {
 }
 
 .btn {
-    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.clear {
+    margin-bottom: 0 !important;
+}
+
+.head-btn {
+    margin-bottom: 20px;
 }

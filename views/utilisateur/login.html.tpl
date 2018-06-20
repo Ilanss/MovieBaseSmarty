@@ -1,9 +1,10 @@
+{include file='layouts/nav.html.tpl'}
 <div class="container">
     <div class="row">
         <div class="col-md-4 offset-md-4">
             <form method="post" action="{$base}/user/login">
                 <fieldset>
-                    {include file='/layouts/notice.php'}
+                    {include file='layouts/notice.tpl'}
                     <div class="form-group">
                         <label for="login">Login</label>
                         <input type="text" class="form-control" id="login" name="login" placeholder="Entrer votre login">
@@ -14,10 +15,10 @@
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-auto">
-                            <div><a href="{$base}/user/create"><small>Vous n'avez pas de compte? Créez un compte!</small></a></div>
+                            <button type="submit" class="btn btn-primary" name="submit" id="submit">Login</button>
                         </div>
                         <div class="col-auto">
-                            <button type="submit" class="btn btn-primary" name="submit" id="submit">Login</button>
+                            <div><a href="{$base}/user/create"><small>Vous n'avez pas de compte? Créez un compte!</small></a></div>
                         </div>
                     </div>
                 </fieldset>
@@ -25,3 +26,4 @@
         </div>
     </div>
 </div>
+{include file='layouts/footer.html.tpl'}

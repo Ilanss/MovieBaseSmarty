@@ -37,4 +37,30 @@ class userHasFilm
         }
     }
 
+    public static function deleteMovie($values){
+        $db = database::connect();
+        $req = $db->prepare('DELETE FROM '.self::$table.' WHERE movie_id = :id');
+        if ($req->execute($values)) {
+            return null;
+        }
+        else {
+            // Si un problème est survenu lors de l'exécution de la requête
+            // On lance une exception avec le message d'erreur de l'exécution ratée
+            throw new Exception($req->errorInfo()[2]);
+        }
+    }
+
+    public static function deleteUser($values){
+        $db = database::connect();
+        $req = $db->prepare('DELETE FROM '.self::$table.' WHERE user_id = :id');
+        if ($req->execute($values)) {
+            return null;
+        }
+        else {
+            // Si un problème est survenu lors de l'exécution de la requête
+            // On lance une exception avec le message d'erreur de l'exécution ratée
+            throw new Exception($req->errorInfo()[2]);
+        }
+    }
+
 }

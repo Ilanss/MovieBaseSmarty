@@ -36,7 +36,21 @@ class film
 
     public static function allFilmPlusList($values){
         $db = database::connect();
-        $req = $db->prepare('SELECT id, title, description, image, SUM(CASE WHEN user_id = :id THEN 1 ELSE 0 END) AS list, vu   FROM '.self::$table.' LEFT JOIN movie_has_user ON movie_has_user.movie_id = movie.id GROUP BY title');
+        $req = $db->prepare('SELECT id, title, description, image, SUM(CASE WHEN user_id = :id THEN 1 ELSE 0 END) AS list, vu FROM '.self::$table.' LEFT JOIN movie_has_user ON movie_has_user.movie_id = movie.id GROUP BY title');
+        if ($req->execute([':id' => $values[':id']])) {
+            $res = $req->fetchAll(PDO::FETCH_OBJ);
+            return $res;
+        }
+        else {
+            // Si un problème est survenu lors de l'exécution de la requête
+            // On lance une exception avec le message d'erreur de l'exécution ratée
+            throw new Exception($req->errorInfo()[2]);
+        }
+    }
+
+    public static function find($values){
+        $db = database::connect();
+        $req = $db->prepare('SELECT id, title, description, image, SUM(CASE WHEN user_id = :id THEN 1 ELSE 0 END) AS list, vu FROM '.self::$table.' LEFT JOIN movie_has_user ON movie_has_user.movie_id = movie.id WHERE title LIKE "%'.$values[':search'].'%" GROUP BY title');
         if ($req->execute([':id' => $values[':id']])) {
             $res = $req->fetchAll(PDO::FETCH_OBJ);
             return $res;
@@ -64,6 +78,19 @@ class film
     public static function modify($values){
         $db = database::connect();
         $req = $db->prepare('UPDATE '.self::$table.' SET title = :title, description = :description, image = :image WHERE id = :id');
+        if ($req->execute($values)) {
+            return null;
+        }
+        else {
+            // Si un problème est survenu lors de l'exécution de la requête
+            // On lance une exception avec le message d'erreur de l'exécution ratée
+            throw new Exception($req->errorInfo()[2]);
+        }
+    }
+
+    public static function delete($values){
+        $db = database::connect();
+        $req = $db->prepare('DELETE FROM '.self::$table.' WHERE id = :id');
         if ($req->execute($values)) {
             return null;
         }

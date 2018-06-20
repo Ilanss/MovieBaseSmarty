@@ -14,7 +14,7 @@ switch ($request_uri[0]) {
     // Home page
     case '/':
         require_once ('controllers/film.ctrl.php');
-        filmCtrl::all();
+        filmCtrl::all($smarty);
         break;
     // Everything else
 
@@ -26,11 +26,11 @@ switch ($request_uri[0]) {
     case '/film/create':
         if(isset($_POST['submit'])){
             require_once ('controllers/film.ctrl.php');
-            filmCtrl::create();
+            filmCtrl::create($smarty);
         }
         elseif(isset($_POST['modify'])){
             require_once ('controllers/film.ctrl.php');
-            filmCtrl::modify();
+            filmCtrl::modify($smarty);
         }
         else {
             $smarty->display('film/create.html.tpl');
@@ -43,18 +43,28 @@ switch ($request_uri[0]) {
 
     case '/film/add':
         require_once ('controllers/film.ctrl.php');
-        filmCtrl::add();
+        filmCtrl::add($smarty);
         break;
 
     case '/film/view':
         require_once ('controllers/film.ctrl.php');
-        filmCtrl::view();
+        filmCtrl::view($smarty);
+        break;
+
+    case '/film/delete':
+        require_once ('controllers/film.ctrl.php');
+        filmCtrl::delete($smarty);
+        break;
+
+    case '/film/search':
+        require_once ('controllers/film.ctrl.php');
+        filmCtrl::search($smarty);
         break;
 
     case '/user/create':
         if(isset($_POST['submit'])){
             require_once ('controllers/utilisateur.ctrl.php');
-            utilisateurCtrl::create();
+            utilisateurCtrl::create($smarty);
         }
         else{
             $smarty->display('utilisateur/create.html.tpl');
@@ -62,33 +72,66 @@ switch ($request_uri[0]) {
         break;
 
     case '/user/login':
-        if(isset($_POST['submit'])){
-            require_once ('controllers/utilisateur.ctrl.php');
-            utilisateurCtrl::login();
+        if(isset($_SESSION['login'])){
+            require_once ('controllers/film.ctrl.php');
+            filmCtrl::allFromUser($smarty);
         }
         else {
-            $smarty->display('utilisateur/login.html.tpl');
+            if (isset($_POST['submit'])) {
+                require_once('controllers/utilisateur.ctrl.php');
+                utilisateurCtrl::login($smarty);
+            } else {
+                $smarty->display('utilisateur/login.html.tpl');
+            }
         }
         break;
 
     case '/user/logout':
         require_once ('controllers/utilisateur.ctrl.php');
-        utilisateurCtrl::logout();
+        utilisateurCtrl::logout($smarty);
         break;
 
     case '/mybase':
         if(isset($_SESSION['id'])){
             require_once ('controllers/film.ctrl.php');
-            filmCtrl::allFromUser();
+            filmCtrl::allFromUser($smarty);
         }
         else {
-            $notice = "Vous devez être connecté pour voir vos films";
+            $smarty->assign('errors', "Vous devez être connecté pour voir vos films");
             $smarty->display('utilisateur/login.html.tpl');
         }
         break;
 
     case '/user':
+        require_once ('controllers/utilisateur.ctrl.php');
+        utilisateurCtrl::showAll($smarty);
         $smarty->display('utilisateur/index.html.tpl');
+        break;
+
+    case '/user/me':
+        require_once ('controllers/utilisateur.ctrl.php');
+        utilisateurCtrl::showAll($smarty);
+        $smarty->display('utilisateur/index.html.tpl');
+        break;
+
+    case '/user/action':
+        require_once ('controllers/utilisateur.ctrl.php');
+        if(isset($_POST['updatepassword'])) {
+            utilisateurCtrl::updatePassword($smarty);
+        }
+        elseif(isset($_POST['delete'])) {
+            utilisateurCtrl::delete($smarty);
+        }
+        elseif(isset($_POST['grantadmin'])) {
+            utilisateurCtrl::grantAdmin($smarty);
+        }
+        elseif(isset($_POST['revokeadmin'])) {
+            utilisateurCtrl::revokeAdmin($smarty);
+        }
+        else {
+            utilisateurCtrl::showAll($smarty);
+            $smarty->display('utilisateur/index.html.tpl');
+        }
         break;
 
     default:
