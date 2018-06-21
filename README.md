@@ -54,5 +54,7 @@ Le site à été migré pour utiliser le système de templating Smarty. Il est t
 
 Le prochain objectif est de permettre aux utilisateurs de changer leurs infos. Sinon il y a aussi des corrections mineures qui vont être apportée afin de combler des lacunes et rendre l'application plus stable.
 
+Un système de pagination est aussi en développement afin de pouvoir supporter des filmothèques plus large
+
 # Objectifs du projet
 Tout les objectifs, ainsi que les objectifs complémentaire, determiné au début du projet ont été atteint.
