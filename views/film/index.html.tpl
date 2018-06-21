@@ -17,6 +17,12 @@
                         </form>
                     </div>
                     {/if}
+                    <div class="col-auto justify-content-end ml-auto head-btn">
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-primary"><i class="fas fa-th"></i></button>
+                            <button type="button" class="btn btn-outline-disable"><i class="fas fa-th-list"></i></button>
+                        </div>
+                    </div>
                 </div>
                 {foreach $films as $film}
                     <div class="row">
@@ -105,6 +111,28 @@
                     </div>
                     <hr>
                 {/foreach}
+                <div class="row justify-content-center">
+                    <div class="col-auto">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>                    </div>
+                </div>
             {else}
 
                 <div class="row">
@@ -113,7 +141,7 @@
                 <div class="row justify-content-center">
                     <div class="col-auto">
                         <form action="{$base}/film/create" method="post">
-                            <button type="submit" class="btn btn-primary" name="add" id="add">Ajouter un film</button>
+                            <button type="submit" class="btn btn-primary head" name="add" id="add">Ajouter un film</button>
                         </form>
                     </div>
                 </div>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-06-20 21:23:24
+/* Smarty version 3.1.32, created on 2018-06-21 14:54:57
   from 'D:\MAMP\htdocs\MovieBaseSmarty\views\layouts\nav.html.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b2ac5cc6d51f7_24308496',
+  'unifunc' => 'content_5b2bbc41541e90_55399773',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e0713f1a1eddff3509358fe0f96439435f792f7a' => 
     array (
       0 => 'D:\\MAMP\\htdocs\\MovieBaseSmarty\\views\\layouts\\nav.html.tpl',
-      1 => 1529529801,
+      1 => 1529592805,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b2ac5cc6d51f7_24308496 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b2bbc41541e90_55399773 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!doctype html>
 <html lang="fr">
 <head>
@@ -39,6 +39,9 @@ function content_5b2ac5cc6d51f7_24308496 (Smarty_Internal_Template $_smarty_tpl)
  src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"><?php echo '</script'; ?>
 >    <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['base']->value;?>
 /assets/css/style.css">
+    <?php echo '<script'; ?>
+ defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"><?php echo '</script'; ?>
+>
     <title>My Movie Base</title>
 </head>
 <body>

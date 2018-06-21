@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-06-20 21:42:18
+/* Smarty version 3.1.32, created on 2018-06-21 15:24:08
   from 'D:\MAMP\htdocs\MovieBaseSmarty\views\utilisateur\index.html.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b2aca3a5ca463_58483616',
+  'unifunc' => 'content_5b2bc3180f3616_10901794',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '58f4021517aa3c56123eda217e8a91a6991d43f3' => 
     array (
       0 => 'D:\\MAMP\\htdocs\\MovieBaseSmarty\\views\\utilisateur\\index.html.tpl',
-      1 => 1529530936,
+      1 => 1529594305,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:layouts/footer.html.tpl' => 1,
   ),
 ),false)) {
-function content_5b2aca3a5ca463_58483616 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b2bc3180f3616_10901794 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender('file:layouts/nav.html.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 if ($_SESSION['admin']) {?>
     <div class="container">
@@ -41,7 +41,7 @@ if ($_SESSION['admin']) {?>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <table class="table">
+                        <table class="table table-striped">
                             <thead>
                             <tr>
                                 <th scope="col">Login</th>

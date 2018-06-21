@@ -219,4 +219,34 @@ class utilisateurCtrl {
 
     }
 
+    /* --- Fonction gérant l'affichage des options utilisateur --- */
+    public static function option($smarty){
+        $values = [
+            ':id' => empty($_POST['id']) ? null : $_POST['id'],
+            ':password' => empty($_POST['password']) ? null : md5($_POST['password'])
+        ];
+
+        (empty($values[':password'])) ? $errors = "Veuillez fournir un nouveau mot de passe" : '';
+
+        utilisateurCtrl::showAll($smarty);
+        if(empty($errors)){
+            $errors = utilisateur::updatePassword($values);
+
+            if(empty($errors)) {
+                $smarty->assign('success', "Le mot de passe à été mis à jour");
+                $smarty->display('utilisateur/index.html.tpl');
+            }
+            else{
+                $smarty->assign('errors', $errors);
+                $smarty->display('utilisateur/index.html.tpl');
+            }
+
+        }
+        else {
+            $smarty->assign('errors', "Veuillez fournir un nouveau mot de passe");
+            $smarty->display('utilisateur/index.html.tpl');
+        }
+
+    }
+
 }

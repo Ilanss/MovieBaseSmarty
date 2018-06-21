@@ -111,9 +111,14 @@ switch ($request_uri[0]) {
         break;
 
     case '/user/me':
-        require_once ('controllers/utilisateur.ctrl.php');
-        utilisateurCtrl::showAll($smarty);
-        $smarty->display('utilisateur/index.html.tpl');
+        if(isset($_SESSION['id'])) {
+            require_once('controllers/utilisateur.ctrl.php');
+            utilisateurCtrl::option($smarty);
+        }
+        else {
+            $smarty->assign('errors', "Vous devez être connecté pour voir vos infos");
+            $smarty->display('utilisateur/login.html.tpl');
+        }
         break;
 
     case '/user/action':

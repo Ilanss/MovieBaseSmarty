@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2018-06-20 21:50:48
+/* Smarty version 3.1.32, created on 2018-06-21 15:14:02
   from 'D:\MAMP\htdocs\MovieBaseSmarty\views\film\index.html.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5b2acc38b50853_79223877',
+  'unifunc' => 'content_5b2bc0ba6ed218_49962964',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '0fb1be5d34c103700804f0d44b387bb731dd5908' => 
     array (
       0 => 'D:\\MAMP\\htdocs\\MovieBaseSmarty\\views\\film\\index.html.tpl',
-      1 => 1529531148,
+      1 => 1529594037,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:layouts/footer.html.tpl' => 1,
   ),
 ),false)) {
-function content_5b2acc38b50853_79223877 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b2bc0ba6ed218_49962964 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender('file:layouts/nav.html.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 <div class="container">
@@ -47,6 +47,12 @@ $_smarty_tpl->_subTemplateRender('file:layouts/nav.html.tpl', $_smarty_tpl->cach
                         </form>
                     </div>
                     <?php }?>
+                    <div class="col-auto justify-content-end ml-auto head-btn">
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-primary"><i class="fas fa-th"></i></button>
+                            <button type="button" class="btn btn-outline-disable"><i class="fas fa-th-list"></i></button>
+                        </div>
+                    </div>
                 </div>
                 <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['films']->value, 'film');
@@ -161,6 +167,28 @@ echo $_smarty_tpl->tpl_vars['film']->value->image;
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+                <div class="row justify-content-center">
+                    <div class="col-auto">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>                    </div>
+                </div>
             <?php } else { ?>
 
                 <div class="row">
@@ -170,7 +198,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                     <div class="col-auto">
                         <form action="<?php echo $_smarty_tpl->tpl_vars['base']->value;?>
 /film/create" method="post">
-                            <button type="submit" class="btn btn-primary" name="add" id="add">Ajouter un film</button>
+                            <button type="submit" class="btn btn-primary head" name="add" id="add">Ajouter un film</button>
                         </form>
                     </div>
                 </div>
