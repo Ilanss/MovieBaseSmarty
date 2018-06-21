@@ -3,18 +3,33 @@ Ce projet de site web à été développé dans le cadre d'un cours de développ
 
 # How to
 Attention, cette application nécessite l'installation de Smarty sur le serveur. Si celui-ci n'est pas présent toutes les informations sont accessible ici: https://www.smarty.net/
+
 1. Télécharger la totalité du projet
+
 2. Décompresser l'archive
+
 3. Placer le contenu du dossier à l'endroit voulut sur le serveur (racine ou pas)
+
 4. Importez le fichier `dump.sql` dans votre base de données (celui contient la structure de la base de données ainsi que quelques films, un administrateur et un simple utilisateur)
+
 5. Ouvrir le fichier `config.php` et le modifier en fonction de votre configuration
-  * DB_USER = Utilisateur de la BDD
-  * DB_PASS = Mot de passe de la BDD
-  * DB_NAME = Nom de la BDD
-  * DB_HOST = Adresse de la BDD (probablement localhost)
-  * SITE_ROOT = Chemin du site dans le cas ou il n'est pas à la racine du serveur
-  * SMARTY = le chemin menant à l'installation de Smarty
+
 6. Enjoy! Le site est fonctionnel!
+
+## Fichier config
+
+  * DB_USER = Utilisateur de la BDD
+
+  * DB_PASS = Mot de passe de la BDD
+
+  * DB_NAME = Nom de la BDD
+
+  * DB_HOST = Adresse de la BDD (probablement localhost)
+
+  * SITE_ROOT = Chemin du site dans le cas ou il n'est pas à la racine du serveur
+
+  * SMARTY = le chemin menant à l'installation de Smarty
+
 
 # Films
 Les films possèdent un titre, une image et une description (synopsis). Il est possible d'ajouter des films et, si l'utilisateur est un administrateur, les modifier et les supprimer.
