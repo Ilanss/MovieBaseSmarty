@@ -57,4 +57,8 @@ Le prochain objectif est de permettre aux utilisateurs de changer leurs infos. S
 Un système de pagination est aussi en développement afin de pouvoir supporter des filmothèques plus large
 
 # Objectifs du projet
-Tout les objectifs, ainsi que les objectifs complémentaire, determiné au début du projet ont été atteint.
+Tout les objectifs principaux ont été atteint et sont même plus complet que prévu.
+
+Les objectifs secondaires ont un peu changé car il y avait d'autre fonctionnalités à implémenter qui me semblait plus importante pour le bon fonctionnement du site. Il manque donc encore le système de notes et de catégories.
+
+L'objectif secondaire concernant les utilisateurs à été atteint.
