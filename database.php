@@ -6,6 +6,7 @@
  * Time: 21:52
  */
 
+/* --- Class contenant la connexion à la base de données --- */
 class database
 {
     public static function connect(){

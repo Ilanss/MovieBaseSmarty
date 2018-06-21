@@ -6,10 +6,13 @@
  * Time: 17:47
  */
 
+/* --- Appel du model utilisateur pour les actions sur la base de données --- */
 require_once ('models/utilisateur.model.php');
 
+/* --- Controlleur pour toutes les opérations concernant les utilisateurs --- */
 class utilisateurCtrl {
 
+    /* --- Fonction gérant la création d'un utilisateur --- */
     public static function create($smarty){
         $values = [
             ':login' => empty($_POST['login']) ? null : $_POST['login'],
@@ -37,6 +40,7 @@ class utilisateurCtrl {
         }
     }
 
+    /* --- Fonction gérant la suppression d'un utilisateur --- */
     public static function delete($smarty){
         $values = [
             ':id' => empty($_POST['id']) ? null : $_POST['id'],
@@ -71,6 +75,7 @@ class utilisateurCtrl {
         }
     }
 
+    /* --- Fonction gérant la connexion d'un utilisateur --- */
     public static function login($smarty){
         $values = [
             ':login' => empty($_POST['login']) ? null : $_POST['login'],
@@ -102,14 +107,17 @@ class utilisateurCtrl {
         }
     }
 
+    /* --- Fonction gérant l'affichage de la liste des utilisateur --- */
     public static function showAll($smarty){
         $smarty->assign('users', utilisateur::showAll());
     }
 
+    /* --- Fonction gérant la recherche d'un utilisateur (à implémenter) --- */
     public static function find(){
 
     }
 
+    /* --- Fonction gérant la deconnexion d'un utilisateur --- */
     public static function logout($smarty){
         $_SESSION['login'] = '';
         $_SESSION['id'] = '';
@@ -121,6 +129,7 @@ class utilisateurCtrl {
         filmCtrl::all($smarty);
     }
 
+    /* --- Fonction gérant la promotion d'un utilisateur --- */
     public static function grantAdmin($smarty){
         $values = [
             ':id' => empty($_POST['id']) ? null : $_POST['id'],
@@ -150,6 +159,7 @@ class utilisateurCtrl {
 
     }
 
+    /* --- Fonction gérant le retrait des droits d'un utilisateur --- */
     public static function revokeAdmin($smarty){
         $values = [
             ':id' => empty($_POST['id']) ? null : $_POST['id'],
@@ -179,6 +189,7 @@ class utilisateurCtrl {
 
     }
 
+    /* --- Fonction gérant le changement de mot de passe d'un utilisateur --- */
     public static function updatePassword($smarty){
         $values = [
             ':id' => empty($_POST['id']) ? null : $_POST['id'],

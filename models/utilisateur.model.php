@@ -6,6 +6,7 @@
  * Time: 17:49
  */
 
+/* --- Class contenant toutes les opérations sur la table user de la base de données --- */
 class utilisateur
 {
     private static $table = 'user';

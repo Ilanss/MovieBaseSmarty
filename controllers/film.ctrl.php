@@ -6,10 +6,13 @@
  * Time: 17:48
  */
 
+/* --- Appel du model film pour les actions sur la base de données --- */
 require_once ('models/film.model.php');
 
+/* --- Controlleur pour toutes les opérations concernant les films --- */
 class filmCtrl{
 
+    /* --- Fonction gérant la création d'un film --- */
     public static function create($smarty){
         $values = [
             ':title' => empty($_POST['title']) ? null : $_POST['title'],
@@ -47,6 +50,7 @@ class filmCtrl{
         }
     }
 
+    /* --- Fonction gérant la modification d'un film --- */
     public static function modify($smarty){
         $values = [
             ':title' => empty($_POST['title']) ? null : $_POST['title'],
@@ -83,6 +87,7 @@ class filmCtrl{
         }
     }
 
+    /* --- Fonction gérant la suppression d'un film --- */
     public static function delete($smarty){
         $values = [
             ':id' => $_POST['id']
@@ -118,6 +123,7 @@ class filmCtrl{
         }
     }
 
+    /* --- Fonction gérant l'affichage de tous les films --- */
     public static function all($smarty){
 
         if(isset($_SESSION['id'])){
@@ -133,6 +139,7 @@ class filmCtrl{
         $smarty->display('film/index.html.tpl');
     }
 
+    /* --- Fonction gérant l'affichage de tous les films d'un utilisateur --- */
     public static function allFromUser($smarty){
         $values = [
             ':id' => $_SESSION['id']
@@ -142,6 +149,7 @@ class filmCtrl{
         $smarty->display('film/index.html.tpl');
     }
 
+    /* --- Fonction gérant l'ajout d'un film dans la liste d'un utilisateur --- */
     public static function add($smarty){
         $values = [
             ':idFilm' => $_POST['id'],
@@ -166,6 +174,7 @@ class filmCtrl{
         }
     }
 
+    /* --- Fonction gérant l'ajout d'un film dans les vu de l'utilisateur --- */
     public static function view($smarty){
         $values = [
             ':idFilm' => $_POST['vu'],
@@ -191,6 +200,7 @@ class filmCtrl{
         }
     }
 
+    /* --- Fonction gérant la recherche de films --- */
     public static function search($smarty){
         $values = [
             ':id' => $_POST['id'],

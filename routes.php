@@ -6,18 +6,19 @@
  * Time: 17:46
  */
 
+/* --- Récupération de l'URL --- */
 $request_uri = explode('?', $_SERVER['REQUEST_URI'], 2);
 $request_uri = str_replace($base, '', $request_uri);
 
-// Route it up!
+/* --- Switch case sur l'URL --- */
 switch ($request_uri[0]) {
-    // Home page
+    /* --- Homepage --- */
     case '/':
         require_once ('controllers/film.ctrl.php');
         filmCtrl::all($smarty);
         break;
-    // Everything else
 
+    /* --- Cas concernant les films --- */
     case '/film':
         require_once ('controllers/film.ctrl.php');
         filmCtrl::all($smarty);
@@ -61,6 +62,7 @@ switch ($request_uri[0]) {
         filmCtrl::search($smarty);
         break;
 
+    /* --- Cas concernant les utilisateurs --- */
     case '/user/create':
         if(isset($_POST['submit'])){
             require_once ('controllers/utilisateur.ctrl.php');
@@ -134,6 +136,7 @@ switch ($request_uri[0]) {
         }
         break;
 
+    /* --- Affichage de la page 404 --- */
     default:
         $smarty->display('404.tpl');
         break;

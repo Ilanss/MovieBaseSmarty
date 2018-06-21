@@ -6,6 +6,7 @@
  * Time: 13:16
  */
 
+/* --- Class contenant toutes les opérations sur la table movie_has_user de la base de données --- */
 class userHasFilm
 {
     private static $table = 'movie_has_user';
