@@ -13,6 +13,7 @@ Attention, cette application nécessite l'installation de Smarty sur le serveur.
   * DB_NAME = Nom de la BDD
   * DB_HOST = Adresse de la BDD (probablement localhost)
   * SITE_ROOT = Chemin du site dans le cas ou il n'est pas à la racine du serveur
+  * SMARTY = le chemin menant à l'installation de Smarty
 6. Enjoy! Le site est fonctionnel!
 
 # Films
